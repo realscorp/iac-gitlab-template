@@ -1,0 +1,9 @@
+# Настройки GSS-аутентификации для работы dns-провайдера
+[libdefaults]
+  default_realm = DOMAIN.EXAMPLE.COM
+
+[realms]
+DOMAIN.EXAMPLE.COM = {
+  kdc = dc1.domain.example.com
+  kdc = dc2.domain.example.com
+}

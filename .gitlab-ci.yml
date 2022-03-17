@@ -1,0 +1,26 @@
+variables:
+  ENABLE_TERRAFORM: "true" # Подключить джобы для Terraform
+  ENABLE_ANSIBLE: "true" # Подключить джобы для Ansible
+  ENABLE_OPENSTACK_TOOLS: "true" # Подключить джобы для Openstack клиента
+
+include:
+  - project: infrastructureascode/lib/pipelines
+    ref: "v1.0.0"
+    file:
+      - "init.yml" # Обязательный пайплайн со списком стадий и инциализацией переменных и ssh
+      # - "env-playground.yml" # Окружение проекта-песочницы
+      - "env-prod.yml" # Окружение боевого облачного проекта
+      # - "env-devqa.yml" # Окружение DEVQA-проекта
+      
+# # Пример для подключения автоматически выполняемой джобы Ansible Apply в расписаниях Гитлаба
+# # При этом окружение задаётся не подключением файлов env-, а через переменную project = (PROD/DEVQA/PLAYGROUND)
+# variables:
+#   ENABLE_TERRAFORM: "false" # Подключить джобы для Terraform
+#   ENABLE_ANSIBLE: "true" # Подключить джобы для Ansible
+#   ENABLE_OPENSTACK_TOOLS: "false" # Подключить джобы для Openstack клиента
+# include:
+#   - project: infrastructureascode/lib/pipelines
+#     ref: "v1.0.0"
+#     file:
+#       - "init.yml" # Обязательный пайплайн со списком стадий и инциализацией переменных и ssh
+#       - "ansible-apply-auto.yml" # Вместо файла подключения окружения - отдельная автоматически-выполняемая джоба

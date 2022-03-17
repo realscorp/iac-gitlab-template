@@ -1,0 +1,18 @@
+# Описание иерархической структуры динамических групп, полученных из Openstack
+---
+linux:
+  children:
+    mtag_os_ver_ubuntu20:
+    mtag_os_ver_ubuntu18:
+    mtag_os_linux:
+
+windows:
+  children:
+    mtag_os_ver_2019:
+    mtag_os_ver_2016:
+    mtag_os_windows:
+
+windows_and_linux:
+  children:
+    windows:
+    linux:

@@ -1,0 +1,4 @@
+---
+# - name: Sample task using included vars
+#   debug:
+#     msg: "Test {{ inventory_hostname }} with var value {{ var_number }}"

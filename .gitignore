@@ -1,0 +1,16 @@
+# TERRAFORM
+#####################
+# Загруженные провайдеры и модули
+terraform/.terraform
+# Локальный стейт-файл
+terraform/.terraform.lock.hcl
+terraform/*tfstate*
+# ANSIBLE
+#####################
+# Ключи
+*.key
+# Файл с паролем от Vault
+ansible/vault-pass.txt
+# Сами роли, кроме файла со списком требуемых ролей
+ansible/roles/*
+!ansible/roles/requirements.yml

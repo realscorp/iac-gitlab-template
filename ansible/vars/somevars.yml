@@ -1,0 +1,11 @@
+# Примеры переменных и значений
+# var_string: value
+# var_number: 123456
+# var_bool: false
+# var_for_loop:
+#   - name: name
+#     win_path: c:\windows
+#     lin_path: '/opt/test'
+#   - name: name2
+#     win_path: c:\windows2
+#     lin_path: '/opt/test2'

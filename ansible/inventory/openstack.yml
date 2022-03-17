@@ -1,0 +1,26 @@
+# Настройки динамического инвентори Openstack
+# Сами значения переменных для аутентификации задаются в переменных окружения с префиксом OS_
+############
+
+# Включаем плагин
+plugin: "openstack.cloud.openstack"
+# Отключаем встроенный алгоритим разбития на группы
+legacy_groups: false
+# По умолчанию доступ к хостам по внутренним ip
+private: true
+
+# Создаём кастомные группы по различным атрибутам с нужным префиксом
+keyed_groups:
+  - prefix: mtag
+    key: openstack.metadata
+    parent_group: all
+    separator: "_"
+
+# Генерируем некоторые переменные для каждого хоста
+compose:
+  # Если на машине установлен метатег ssh_external = yes, настраиваем подключение ansible по внешнему адресу
+  ansible_host: openstack.public_v4 if 'yes' == openstack.metadata.ssh_external else openstack.private_v4
+  ansible_ssh_host: openstack.public_v4 if 'yes' == openstack.metadata.ssh_external else openstack.private_v4
+
+# Полезно для отладки
+fail_on_errors: true

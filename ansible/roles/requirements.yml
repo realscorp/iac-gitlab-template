@@ -1,0 +1,14 @@
+---
+roles:
+  - src: git@gitlab.example.com:infrastructureascode/lib/ans-role-lin-common.git
+    version: "v1.0.0"
+    scm: git
+    name: lin_common
+  - src: git@gitlab.example.com:infrastructureascode/lib/ans-role-win-common.git
+    version: "v1.0.0"
+    scm: git
+    name: win_common
+  - src: git@gitlab.example.com:infrastructureascode/lib/ans-role-lin-psql.git
+    version: "v1.0.0"
+    scm: git
+    name: lin_psql

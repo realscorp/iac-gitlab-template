@@ -1,0 +1,10 @@
+ansible_connection: "winrm"
+ansible_port: 5986
+ansible_winrm_transport: "certificate"
+ansible_user: "Admin"  # В облаке MCS именно этот пользователь является включенным по-умолчанию, а не Administrator
+ansible_winrm_cert_pem: "{{ lookup('env', 'HOME') }}/.winrm/winrm.pem"  # Использование ключа, либо сгенерированного локально, либо добавляемого в пайплайне
+ansible_winrm_cert_key_pem: "{{ lookup('env', 'HOME') }}/.winrm/winrm.key"  # Используем конструкцию с lookup, так как ~ здесь не работает
+ansible_winrm_server_cert_validation: "ignore"
+ansible_become: true  # В процессе работы повышаем привилегии, имперсонируясь в System - без этого некоторые операции не смогут выполниться
+ansible_become_user: "System"
+ansible_become_method: "runas"

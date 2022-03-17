@@ -1,0 +1,44 @@
+---
+###
+# Обратите внимание - те значения, которые должны быть различны между окружениями, мы задаём в виде переменных.
+# Те переменные, что заданы явно для плэя, будут использоваться по-умолчанию, если не будут переопределены в
+# файле переменных для конкретного окружения, например, environment/PROD.vars.yml - этот файл будет
+# автоматически подгружен при выполнении пайплайна
+#######
+
+# - name: Sample Windows app server
+#   hosts: v-app-example
+#   vars_files:  # раскомментируй, если используешь в проекте Ansible Vault
+#     - vars/somevars.yml
+##     - vault-vars.yml  # раскомментируй, если используешь в проекте Ansible Vault
+#   vars:
+#     app_domain_join: false
+#     app_zabbix_metadata:
+#       - "test"
+#   roles:
+#     - role: win_common
+#       vars:
+#         wcmn_domain_join: "{{ app_domain_join }}"
+#         wcmn_domain_ou_path: "OU=test,DC=example,DC=com"
+#         wcmn_zabbix_metadata: "{{ app_zabbix_metadata }}"
+#   tasks:
+#     - include: tasks/sometask.yml
+#       tags:
+#         - sometag
+
+# - name: Sample Linux PostgreSQL server
+#   hosts: v-db-example
+##   vars_files:  # раскомментируй, если используешь в проекте Ansible Vault
+##     - vault-vars.yml  # раскомментируй, если используешь в проекте Ansible Vault
+#   vars:
+#     db_zabbix_metadata:
+#       - "test"
+#   roles:
+#     - role: lin_common
+#       vars:
+#         lcmn_zabbix_metadata: "{{ db_zabbix_metadata }}"
+#     - role: lin_psql
+#   tasks:
+#     - name: debug
+#       debug:
+#         msg: "Test {{ inventory_hostname }}"
